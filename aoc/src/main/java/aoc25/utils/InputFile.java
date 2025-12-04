@@ -33,7 +33,30 @@ public class InputFile {
             e.printStackTrace();
             throw new IllegalStateException(e);
         }
-        // aoc/src/main/resources/day1.txt
+    }
+
+    public static String[][] getStringMap(List<String> inputLines) {
+
+        if (inputLines.isEmpty()) {
+            System.out.println("INPUT IS EMPTY!");
+            return null;
+        }
+
+        int height = inputLines.size();
+        int width = inputLines.get(0).length(); // assumes all rows are the same!
+
+        String[][] map = new String[height][width];
+
+        for (int y = 0; y < inputLines.size(); y++) {
+
+            char[] row = inputLines.get(y).toCharArray();
+
+            for (int x = 0; x < width; x++) {
+                map[y][x] = String.valueOf(row[x]);
+            }
+        }
+
+        return map;
     }
 
 }
