@@ -15,8 +15,7 @@ public class Day6 {
     static Integer height;
     static Integer width;
 
-    static String[][] map;
-    static String[][] splitMap;
+    static String[][] columns;
 
     public static void main(String[] args) throws Exception {
 
@@ -26,14 +25,14 @@ public class Day6 {
         Long partTwoResult = 0L;
 
         for (int x = 0; x < width; x++) {
-            String operation = splitMap[height - 1][x].trim();
+            String operation = columns[height - 1][x].trim();
             Long partOneColumnResult = operation.equals("+") ? 0L : 1L;
             Long partTwoColumnResult = operation.equals("+") ? 0L : 1L;
 
             HashMap<Integer, ArrayList<String>> columnMap = new HashMap<Integer, ArrayList<String>>();
 
             for (int y = 0; y < height - 1; y++) {
-                String item = splitMap[y][x];
+                String item = columns[y][x];
                 if (operation.equals("+")) {
                     partOneColumnResult += Long.parseLong(item.trim());
                 } else {
@@ -92,7 +91,7 @@ public class Day6 {
             }
         }
 
-        splitMap = new String[height][width];
+        columns = new String[height][width];
 
         for (int y = 0; y < inputLines.size(); y++) {
 
@@ -101,7 +100,7 @@ public class Day6 {
             for (Integer x = 0; x < indices.size(); x++) {
                 String item = x == indices.size() - 1 ? row.substring(indices.get(x))
                         : row.substring(indices.get(x), indices.get(x + 1));
-                splitMap[y][x] = item;
+                columns[y][x] = item;
             }
         }
 
