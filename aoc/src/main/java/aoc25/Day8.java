@@ -19,6 +19,8 @@ public class Day8 {
     static List<Pair> sortedPairs;
 
     public static void main(String[] args) throws Exception {
+        long startTime = System.nanoTime();
+
         getJunctionBoxes();
 
         System.out
@@ -33,13 +35,7 @@ public class Day8 {
 
                 System.out.println("Comparing box " + i + ":" + box.input + " with box " + j + " : " + otherBox.input);
 
-                Boolean alreadyPaired = pairs.stream().anyMatch(
-                        p -> p.ref.equals(otherBox.input + "-" + box.input));
-
-                if (!alreadyPaired) {
-
-                    pairs.add(new Pair(box, otherBox));
-                }
+                pairs.add(new Pair(box, otherBox));
             }
         }
 
@@ -89,6 +85,11 @@ public class Day8 {
 
             System.out.println("Part two result: " + partTwoResult);
         }
+
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime) / 1000000;
+        System.out.println("time taken in milliseconds: " + duration);
 
     }
 
